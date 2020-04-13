@@ -16,7 +16,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: lohotron
+      POSTGRES_DB: exchange-trading
   adminer:
     image: adminer
     restart: always

@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.configuration;
+package vovandev.exchangetrading.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import vovandev.lohotronexchange.repository.UserRepository;
-import vovandev.lohotronexchange.service.UserDetailsPrincipalService;
+import vovandev.exchangetrading.repository.UserRepository;
+import vovandev.exchangetrading.service.UserDetailsPrincipalService;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration

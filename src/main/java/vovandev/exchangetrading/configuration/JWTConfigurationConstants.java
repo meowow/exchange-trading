@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.configuration;
+package vovandev.exchangetrading.configuration;
 
 public class JWTConfigurationConstants {
     public static final String SECRET = "EXCHANGE_APP";

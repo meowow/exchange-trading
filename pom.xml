@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>vovandev</groupId>
-    <artifactId>lohotron-exchange</artifactId>
+    <artifactId>exchange-trading</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lohotron-exchange</name>
-    <description>Exchange test project</description>
+    <name>exchange-trading</name>
+    <description>Exchange trading project</description>
 
     <properties>
         <java.version>11</java.version>

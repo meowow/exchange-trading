@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.service;
+package vovandev.exchangetrading.service;
 
 import javax.websocket.*;
 import java.net.URI;

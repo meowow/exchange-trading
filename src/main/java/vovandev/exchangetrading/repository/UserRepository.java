@@ -1,8 +1,8 @@
-package vovandev.lohotronexchange.repository;
+package vovandev.exchangetrading.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import vovandev.lohotronexchange.entity.User;
+import vovandev.exchangetrading.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

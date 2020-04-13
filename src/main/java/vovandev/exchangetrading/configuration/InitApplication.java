@@ -1,11 +1,11 @@
-package vovandev.lohotronexchange.configuration;
+package vovandev.exchangetrading.configuration;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import vovandev.lohotronexchange.entity.User;
-import vovandev.lohotronexchange.repository.UserRepository;
-import vovandev.lohotronexchange.service.CommunicationService;
+import vovandev.exchangetrading.entity.User;
+import vovandev.exchangetrading.repository.UserRepository;
+import vovandev.exchangetrading.service.CommunicationService;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;

@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.service;
+package vovandev.exchangetrading.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +30,7 @@ public class CommunicationService {
             // send message to websocket
 //            clientEndPoint.sendMessage("{'event':'addChannel','channel':'ok_btccny_ticker'}");
 
-            // wait 5 seconds for messages from websocket
-            Thread.sleep(5000);
 
-        } catch (InterruptedException ex) {
-            System.err.println("InterruptedException exception: " + ex.getMessage());
         } catch (URISyntaxException ex) {
             System.err.println("URISyntaxException exception: " + ex.getMessage());
         }

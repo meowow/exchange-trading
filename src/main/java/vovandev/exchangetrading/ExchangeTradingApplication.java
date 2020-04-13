@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange;
+package vovandev.exchangetrading;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class LohotronExchangeApplication {
+public class ExchangeTradingApplication {
     public static void main(String[] args) {
-        SpringApplication.run(LohotronExchangeApplication.class, args);
+        SpringApplication.run(ExchangeTradingApplication.class, args);
     }
 
     @Bean

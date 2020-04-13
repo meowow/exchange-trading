@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.entity;
+package vovandev.exchangetrading.entity;
 
 import javax.persistence.*;
 import java.util.List;

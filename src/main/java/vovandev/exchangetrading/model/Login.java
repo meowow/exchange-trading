@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.model;
+package vovandev.exchangetrading.model;
 
 public class Login {
     private String username;

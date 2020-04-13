@@ -1,4 +1,4 @@
-package vovandev.lohotronexchange.configuration;
+package vovandev.exchangetrading.configuration;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -7,9 +7,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import vovandev.lohotronexchange.entity.User;
-import vovandev.lohotronexchange.model.UserPrincipal;
-import vovandev.lohotronexchange.repository.UserRepository;
+import vovandev.exchangetrading.entity.User;
+import vovandev.exchangetrading.model.UserPrincipal;
+import vovandev.exchangetrading.repository.UserRepository;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

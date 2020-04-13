@@ -1,13 +1,11 @@
-package vovandev.lohotronexchange.controller;
+package vovandev.exchangetrading.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vovandev.lohotronexchange.entity.User;
-import vovandev.lohotronexchange.repository.UserRepository;
+import vovandev.exchangetrading.entity.User;
+import vovandev.exchangetrading.repository.UserRepository;
 
-import javax.annotation.PostConstruct;
 import java.security.Principal;
 import java.util.List;
 
