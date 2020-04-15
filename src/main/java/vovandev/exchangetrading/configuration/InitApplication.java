@@ -36,7 +36,15 @@ public class InitApplication implements CommandLineRunner {
         );
         userRepository.saveAll(users);
 
-        /* Start WebSocket connection */
-        communicationService.establishConnection();
+        boolean reconnect = true;
+        while (reconnect) {
+            /* Start WebSocket connection */
+            try {
+                communicationService.establishConnection();
+                reconnect = false;
+            } catch (IllegalStateException e) {
+                communicationService.establishConnection();
+            }
+        }
     }
 }

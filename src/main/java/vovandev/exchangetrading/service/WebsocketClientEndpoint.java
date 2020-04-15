@@ -11,6 +11,8 @@ public class WebsocketClientEndpoint {
     public WebsocketClientEndpoint(URI endpointURI) {
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+            container.setDefaultMaxBinaryMessageBufferSize(32768);
+            container.setDefaultMaxTextMessageBufferSize(32768);
             container.connectToServer(this, endpointURI);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -75,8 +77,8 @@ public class WebsocketClientEndpoint {
      *
      * @author Jiji_Sasidharan
      */
-    public static interface MessageHandler {
+    public interface MessageHandler {
 
-        public void handleMessage(String message);
+        void handleMessage(String message);
     }
 }

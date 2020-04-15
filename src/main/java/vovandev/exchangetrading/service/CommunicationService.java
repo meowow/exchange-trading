@@ -2,37 +2,35 @@ package vovandev.exchangetrading.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.ExecutionException;
 
 @Service
 public class CommunicationService {
+
+    @Autowired
+    private ExchangeMessageHandler handler;
 
     Logger logger = LoggerFactory.getLogger(CommunicationService.class);
 
     public static final String URL = "wss://www.bitmex.com/realtime";
 
-    public void establishConnection() throws ExecutionException, InterruptedException {
+    public void establishConnection() {
         try {
             // open websocket
             final WebsocketClientEndpoint clientEndPoint = new WebsocketClientEndpoint(new URI(URL));
 
             // add listener
-            clientEndPoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {
-                public void handleMessage(String message) {
-                    System.out.println(message);
-                }
-            });
+            clientEndPoint.addMessageHandler(handler);
 
             // send message to websocket
-//            clientEndPoint.sendMessage("{'event':'addChannel','channel':'ok_btccny_ticker'}");
-
+            clientEndPoint.sendMessage("{\"op\": \"subscribe\", \"args\": [\"tradeBin1m\"]}");
 
         } catch (URISyntaxException ex) {
-            System.err.println("URISyntaxException exception: " + ex.getMessage());
+            logger.error("URISyntaxException exception: " + ex.getMessage());
         }
     }
 
