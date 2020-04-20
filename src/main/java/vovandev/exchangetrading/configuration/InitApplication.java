@@ -36,6 +36,7 @@ public class InitApplication implements CommandLineRunner {
         );
         userRepository.saveAll(users);
 
+        /* Poor solution */
         boolean reconnect = true;
         while (reconnect) {
             /* Start WebSocket connection */
