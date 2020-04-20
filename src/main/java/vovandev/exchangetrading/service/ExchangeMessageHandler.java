@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vovandev.exchangetrading.model.Candlestick;
 import vovandev.exchangetrading.model.TradeResponse;
-import vovandev.exchangetrading.repository.CandlestickRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,16 +16,16 @@ import java.util.List;
 public class ExchangeMessageHandler implements WebsocketClientEndpoint.MessageHandler {
 
     @Autowired
-    private PairConverterService converter;
-    @Autowired
-    private CandlestickRepository candlestickRepository;
+    private CandlesSavePhase candlesSavePhase;
 
     private Logger logger = LoggerFactory.getLogger(ExchangeMessageHandler.class);
 
     @Override
     public void handleMessage(String message) {
         List<TradeResponse> tradeResponses = getTradeResponse(message);
-        List<Candlestick> japanCandles = converter.getJapanCandlesticks(tradeResponses);
+        candlesSavePhase.extractAndSave(tradeResponses);
+
+
     }
 
     /**

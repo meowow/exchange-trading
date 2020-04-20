@@ -19,11 +19,6 @@ public class Home {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("hello")
-    public String home() {
-        return"Hello worlds";
-    }
-
     @GetMapping("user")
     public Principal user(Principal user) {
         return user;
