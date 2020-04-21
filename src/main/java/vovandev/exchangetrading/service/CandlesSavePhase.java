@@ -24,7 +24,7 @@ public class CandlesSavePhase {
     public void extractAndSave(List<TradeResponse> tradeResponses) {
         List<Candlestick> japanCandles = converter.getJapanCandlesticks(tradeResponses);
         if (japanCandles == null || japanCandles.isEmpty()) {
-            logger.error("The tread response is missing. Saving skipped");
+            logger.error("The treading response is missing. Saving skipped");
             return;
         }
 
