@@ -28,9 +28,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+
         try {
             Login loginInfo = new ObjectMapper().readValue(request.getInputStream(), Login.class);
-
+            if (loginInfo.getUsername().isBlank() || loginInfo.getPassword().isBlank()) {
+                throw new RuntimeException("Credentials missing username is blank: "
+                        +  loginInfo.getUsername().isBlank()
+                        + "password is blank: " + loginInfo.getPassword().isBlank());
+            }
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                     loginInfo.getUsername(), loginInfo.getPassword(), new ArrayList<>()
             );
@@ -51,5 +56,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(Algorithm.HMAC512(JWTConfigurationConstants.SECRET.getBytes()));
 
         response.addHeader(JWTConfigurationConstants.AUTH_HEADER, JWTConfigurationConstants.BEARER + token);
+        response.getWriter().write(JWTConfigurationConstants.AUTH_HEADER + " " + JWTConfigurationConstants.BEARER + token);
     }
 }

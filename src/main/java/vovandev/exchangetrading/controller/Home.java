@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vovandev.exchangetrading.entity.Candlestick;
 import vovandev.exchangetrading.entity.User;
-import vovandev.exchangetrading.repository.CandlestickRepository;
 import vovandev.exchangetrading.repository.UserRepository;
+import vovandev.exchangetrading.service.CommunicationService;
 
-import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,16 +16,11 @@ import java.util.List;
 public class Home {
 
     private UserRepository userRepository;
-    private CandlestickRepository candlestickRepository;
+    private CommunicationService communicationService;
 
-    public Home(UserRepository userRepository, CandlestickRepository candlestickRepository) {
+    public Home(UserRepository userRepository, CommunicationService communicationService) {
         this.userRepository = userRepository;
-        this.candlestickRepository = candlestickRepository;
-    }
-
-    @GetMapping("user")
-    public Principal user(Principal user) {
-        return user;
+        this.communicationService = communicationService;
     }
 
     @GetMapping("users")
@@ -42,8 +35,17 @@ public class Home {
 
     @GetMapping("candles")
     public List<Candlestick> getCandlesticks(Authentication auth) {
-        List<Candlestick> ret = new ArrayList<>();
-
+        List<Candlestick> ret;
+        // no authorized gets the last results
+        if (auth == null) {
+            ret = communicationService.getLastInsertedCandles();
+        // authorized gets all records
+        } else {
+            ret = communicationService.getAllCandles();
+        }
+        if (ret == null || ret.isEmpty()) {
+            return List.of();
+        }
         return ret;
     }
 }

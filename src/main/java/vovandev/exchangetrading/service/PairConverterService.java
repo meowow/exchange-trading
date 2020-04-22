@@ -40,13 +40,11 @@ public class PairConverterService {
     }
 
     private boolean filterForTheNeededPairs(DataItem dataItem) {
-        /* Removing the dot at the 1 position */
-        String symbolWithoutDot = dataItem.getSymbol().substring(1);
-        return pairs.stream().anyMatch(p -> p.equalsIgnoreCase(symbolWithoutDot));
+        return pairs.stream().anyMatch(p -> p.equalsIgnoreCase(dataItem.getSymbol()));
     }
 
     private Candlestick createCandlestick(DataItem dataItem) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Candlestick ret = new Candlestick();
         try {
             ret.setTimestamp(formatter.parse(dataItem.getTimestamp()));

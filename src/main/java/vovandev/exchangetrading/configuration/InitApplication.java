@@ -28,7 +28,7 @@ public class InitApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws ExecutionException, InterruptedException {
+    public void run(String... args) {
         /* Populate DB*/
         List<User> users = List.of(
                 new User("admin", passwordEncoder.encode("pass"), "ADMIN", "ALL"),
@@ -36,7 +36,7 @@ public class InitApplication implements CommandLineRunner {
         );
         userRepository.saveAll(users);
 
-        /* Poor solution */
+        /* Poor solution. it must be in some bean's initial method */
         boolean reconnect = true;
         while (reconnect) {
             /* Start WebSocket connection */

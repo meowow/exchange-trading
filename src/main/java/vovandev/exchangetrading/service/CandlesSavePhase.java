@@ -20,11 +20,10 @@ public class CandlesSavePhase {
 
     private Logger logger = LoggerFactory.getLogger(CandlesSavePhase.class);
 
-
     public void extractAndSave(List<TradeResponse> tradeResponses) {
         List<Candlestick> japanCandles = converter.getJapanCandlesticks(tradeResponses);
         if (japanCandles == null || japanCandles.isEmpty()) {
-            logger.error("The treading response is missing. Saving skipped");
+            logger.warn("The treading response is missing. Saving skipped");
             return;
         }
 
